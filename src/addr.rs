@@ -7,8 +7,8 @@ use std::net::{SocketAddr, SocketAddrV4, SocketAddrV6, ToSocketAddrs};
 use std::pin::Pin;
 use std::task::{Context, Poll};
 
-use blocking::unblock;
-use futures_lite::future;
+use superpoll_blocking::unblock;
+use futures::future;
 
 /// Converts or resolves addresses to [`SocketAddr`] values.
 ///
@@ -30,8 +30,10 @@ pub trait Sealed {
     fn to_socket_addrs(&self) -> ToSocketAddrsFuture<Self::Iter>;
 }
 
+type BoxedFuture<T> = Pin<Box<dyn future::Future<Output = T> + Send + 'static>>;
+
 pub enum ToSocketAddrsFuture<I> {
-    Resolving(future::Boxed<io::Result<I>>),
+    Resolving(BoxedFuture<io::Result<I>>),
     Ready(io::Result<I>),
     Done,
 }

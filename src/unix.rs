@@ -19,8 +19,8 @@ use std::task::{Context, Poll};
 #[doc(no_inline)]
 pub use std::os::unix::net::SocketAddr;
 
-use async_io::Async;
-use futures_lite::{prelude::*, ready};
+use superpoll_io::Async;
+use futures::{prelude::*, ready};
 
 /// A Unix server, listening for connections.
 ///

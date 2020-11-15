@@ -11,8 +11,8 @@ use std::pin::Pin;
 use std::sync::Arc;
 use std::task::{Context, Poll};
 
-use async_io::Async;
-use futures_lite::{prelude::*, ready};
+use superpoll_io::Async;
+use futures::{prelude::*, ready};
 
 use crate::addr::AsyncToSocketAddrs;
 

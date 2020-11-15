@@ -7,7 +7,7 @@ use std::os::unix::io::{AsRawFd, RawFd};
 use std::os::windows::io::{AsRawSocket, RawSocket};
 use std::sync::Arc;
 
-use async_io::Async;
+use superpoll_io::Async;
 
 use crate::addr::AsyncToSocketAddrs;
 
