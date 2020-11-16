@@ -14,9 +14,9 @@
 //! A simple UDP server that echoes messages back to the sender:
 //!
 //! ```no_run
-//! use async_net::UdpSocket;
+//! use superpoll_net::UdpSocket;
 //!
-//! # futures_lite::future::block_on(async {
+//! # futures::executor::block_on(async {
 //! let socket = UdpSocket::bind("127.0.0.1:8080").await?;
 //! let mut buf = vec![0u8; 1024];
 //!
@@ -54,8 +54,8 @@ pub use std::net::AddrParseError;
 /// # Examples
 ///
 /// ```
-/// # futures_lite::future::block_on(async {
-/// for addr in async_net::resolve("google.com:80").await? {
+/// # futures::executor::block_on(async {
+/// for addr in superpoll_net::resolve("google.com:80").await? {
 ///     println!("{}", addr);
 /// }
 /// # std::io::Result::Ok(()) });

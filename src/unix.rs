@@ -35,10 +35,10 @@ use futures::{prelude::*, ready};
 /// # Examples
 ///
 /// ```no_run
-/// use async_net::unix::UnixListener;
-/// use futures_lite::prelude::*;
+/// use superpoll_net::unix::UnixListener;
+/// use futures::prelude::*;
 ///
-/// # futures_lite::future::block_on(async {
+/// # futures::executor::block_on(async {
 /// let listener = UnixListener::bind("/tmp/socket")?;
 /// let mut incoming = listener.incoming();
 ///
@@ -63,10 +63,10 @@ impl UnixListener {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixListener;
-    /// use futures_lite::prelude::*;
+    /// use superpoll_net::unix::UnixListener;
+    /// use futures::prelude::*;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let listener = UnixListener::bind("/tmp/socket")?;
     /// let mut incoming = listener.incoming();
     ///
@@ -88,9 +88,9 @@ impl UnixListener {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixListener;
+    /// use superpoll_net::unix::UnixListener;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let listener = UnixListener::bind("/tmp/socket")?;
     /// let (stream, addr) = listener.accept().await?;
     /// # std::io::Result::Ok(()) });
@@ -109,10 +109,10 @@ impl UnixListener {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixListener;
-    /// use futures_lite::prelude::*;
+    /// use superpoll_net::unix::UnixListener;
+    /// use futures::prelude::*;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let listener = UnixListener::bind("/tmp/socket")?;
     /// let mut incoming = listener.incoming();
     ///
@@ -134,9 +134,9 @@ impl UnixListener {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixListener;
+    /// use superpoll_net::unix::UnixListener;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let listener = UnixListener::bind("/tmp/socket")?;
     /// println!("Local address is {:?}", listener.local_addr()?);
     /// # std::io::Result::Ok(()) });
@@ -232,10 +232,10 @@ impl fmt::Debug for Incoming<'_> {
 /// # Examples
 ///
 /// ```no_run
-/// use async_net::unix::UnixStream;
-/// use futures_lite::prelude::*;
+/// use superpoll_net::unix::UnixStream;
+/// use futures::prelude::*;
 ///
-/// # futures_lite::future::block_on(async {
+/// # futures::executor::block_on(async {
 /// let mut stream = UnixStream::connect("/tmp/socket").await?;
 /// stream.write_all(b"hello").await?;
 ///
@@ -266,9 +266,9 @@ impl UnixStream {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixStream;
+    /// use superpoll_net::unix::UnixStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = UnixStream::connect("/tmp/socket").await?;
     /// # std::io::Result::Ok(()) });
     /// ```
@@ -282,9 +282,9 @@ impl UnixStream {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixStream;
+    /// use superpoll_net::unix::UnixStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let (stream1, stream2) = UnixStream::pair()?;
     /// # std::io::Result::Ok(()) });
     /// ```
@@ -298,9 +298,9 @@ impl UnixStream {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixStream;
+    /// use superpoll_net::unix::UnixStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = UnixStream::connect("/tmp/socket").await?;
     /// println!("Local address is {:?}", stream.local_addr()?);
     /// # std::io::Result::Ok(()) });
@@ -314,9 +314,9 @@ impl UnixStream {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixStream;
+    /// use superpoll_net::unix::UnixStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = UnixStream::connect("/tmp/socket").await?;
     /// println!("Connected to {:?}", stream.peer_addr()?);
     /// # std::io::Result::Ok(()) });
@@ -331,9 +331,9 @@ impl UnixStream {
     /// immediately with an appropriate value (see the documentation of [`Shutdown`]).
     ///
     /// ```no_run
-    /// use async_net::{Shutdown, unix::UnixStream};
+    /// use superpoll_net::{Shutdown, unix::UnixStream};
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = UnixStream::connect("/tmp/socket").await?;
     /// stream.shutdown(Shutdown::Both)?;
     /// # std::io::Result::Ok(()) });
@@ -498,9 +498,9 @@ impl AsyncWrite for UnixStream {
 /// # Examples
 ///
 /// ```no_run
-/// use async_net::unix::UnixDatagram;
+/// use superpoll_net::unix::UnixDatagram;
 ///
-/// # futures_lite::future::block_on(async {
+/// # futures::executor::block_on(async {
 /// let socket = UnixDatagram::bind("/tmp/socket1")?;
 /// socket.send_to(b"hello", "/tmp/socket2").await?;
 ///
@@ -523,9 +523,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixDatagram;
+    /// use superpoll_net::unix::UnixDatagram;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UnixDatagram::bind("/tmp/socket")?;
     /// # std::io::Result::Ok(()) });
     /// ```
@@ -539,9 +539,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixDatagram;
+    /// use superpoll_net::unix::UnixDatagram;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UnixDatagram::unbound()?;
     /// # std::io::Result::Ok(()) });
     /// ```
@@ -555,9 +555,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixDatagram;
+    /// use superpoll_net::unix::UnixDatagram;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let (socket1, socket2) = UnixDatagram::pair()?;
     /// # std::io::Result::Ok(()) });
     /// ```
@@ -580,9 +580,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixDatagram;
+    /// use superpoll_net::unix::UnixDatagram;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UnixDatagram::unbound()?;
     /// socket.connect("/tmp/socket")?;
     /// # std::io::Result::Ok(()) });
@@ -597,9 +597,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixDatagram;
+    /// use superpoll_net::unix::UnixDatagram;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UnixDatagram::bind("/tmp/socket")?;
     /// println!("Bound to {:?}", socket.local_addr()?);
     /// # std::io::Result::Ok(()) });
@@ -613,9 +613,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixDatagram;
+    /// use superpoll_net::unix::UnixDatagram;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UnixDatagram::unbound()?;
     /// socket.connect("/tmp/socket")?;
     /// println!("Connected to {:?}", socket.peer_addr()?);
@@ -632,9 +632,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixDatagram;
+    /// use superpoll_net::unix::UnixDatagram;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UnixDatagram::bind("/tmp/socket")?;
     ///
     /// let mut buf = vec![0; 1024];
@@ -653,9 +653,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixDatagram;
+    /// use superpoll_net::unix::UnixDatagram;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UnixDatagram::unbound()?;
     /// socket.send_to(b"hello", "/tmp/socket").await?;
     /// # std::io::Result::Ok(()) });
@@ -671,9 +671,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixDatagram;
+    /// use superpoll_net::unix::UnixDatagram;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UnixDatagram::unbound()?;
     /// socket.connect("/tmp/socket")?;
     ///
@@ -692,9 +692,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::unix::UnixDatagram;
+    /// use superpoll_net::unix::UnixDatagram;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UnixDatagram::unbound()?;
     /// socket.connect("/tmp/socket")?;
     /// socket.send(b"hello").await?;
@@ -712,9 +712,9 @@ impl UnixDatagram {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::{Shutdown, unix::UnixDatagram};
+    /// use superpoll_net::{Shutdown, unix::UnixDatagram};
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UnixDatagram::unbound()?;
     /// socket.shutdown(Shutdown::Both)?;
     /// # std::io::Result::Ok(()) });

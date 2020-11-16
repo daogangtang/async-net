@@ -33,10 +33,10 @@ use crate::addr::AsyncToSocketAddrs;
 /// # Examples
 ///
 /// ```no_run
-/// use async_net::TcpListener;
-/// use futures_lite::prelude::*;
+/// use superpoll_net::TcpListener;
+/// use futures::prelude::*;
 ///
-/// # futures_lite::future::block_on(async {
+/// # futures::executor::block_on(async {
 /// let listener = TcpListener::bind("127.0.0.1:8080").await?;
 /// let mut incoming = listener.incoming();
 ///
@@ -71,9 +71,9 @@ impl TcpListener {
     /// Create a TCP listener bound to `127.0.0.1:80`:
     ///
     /// ```no_run
-    /// use async_net::TcpListener;
+    /// use superpoll_net::TcpListener;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let listener = TcpListener::bind("127.0.0.1:80").await?;
     /// # std::io::Result::Ok(()) });
     /// ```
@@ -82,9 +82,9 @@ impl TcpListener {
     /// binding to `127.0.0.1:443`:
     ///
     /// ```no_run
-    /// use async_net::{SocketAddr, TcpListener};
+    /// use superpoll_net::{SocketAddr, TcpListener};
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let addrs = [
     ///     SocketAddr::from(([127, 0, 0, 1], 80)),
     ///     SocketAddr::from(([127, 0, 0, 1], 443)),
@@ -116,9 +116,9 @@ impl TcpListener {
     /// Bind to port 0 and then see which port was assigned by the operating system:
     ///
     /// ```no_run
-    /// use async_net::{SocketAddr, TcpListener};
+    /// use superpoll_net::{SocketAddr, TcpListener};
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let listener = TcpListener::bind("127.0.0.1:0").await?;
     /// println!("Listening on {}", listener.local_addr()?);
     /// # std::io::Result::Ok(()) });
@@ -133,9 +133,9 @@ impl TcpListener {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::TcpListener;
+    /// use superpoll_net::TcpListener;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let listener = TcpListener::bind("127.0.0.1:8080").await?;
     /// let (stream, addr) = listener.accept().await?;
     /// # std::io::Result::Ok(()) });
@@ -154,10 +154,10 @@ impl TcpListener {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::TcpListener;
-    /// use futures_lite::prelude::*;
+    /// use superpoll_net::TcpListener;
+    /// use futures::prelude::*;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let listener = TcpListener::bind("127.0.0.1:0").await?;
     /// let mut incoming = listener.incoming();
     ///
@@ -182,9 +182,9 @@ impl TcpListener {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::TcpListener;
+    /// use superpoll_net::TcpListener;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let listener = TcpListener::bind("127.0.0.1:80").await?;
     /// listener.set_ttl(100)?;
     /// assert_eq!(listener.ttl()?, 100);
@@ -202,9 +202,9 @@ impl TcpListener {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::TcpListener;
+    /// use superpoll_net::TcpListener;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let listener = TcpListener::bind("127.0.0.1:80").await?;
     /// listener.set_ttl(100)?;
     /// # std::io::Result::Ok(()) });
@@ -304,10 +304,10 @@ impl fmt::Debug for Incoming<'_> {
 /// # Examples
 ///
 /// ```no_run
-/// use async_net::TcpStream;
-/// use futures_lite::prelude::*;
+/// use superpoll_net::TcpStream;
+/// use futures::prelude::*;
 ///
-/// # futures_lite::future::block_on(async {
+/// # futures::executor::block_on(async {
 /// let mut stream = TcpStream::connect("127.0.0.1:8080").await?;
 /// stream.write_all(b"hello").await?;
 ///
@@ -346,9 +346,9 @@ impl TcpStream {
     /// Connect to `example.com:80`:
     ///
     /// ```
-    /// use async_net::TcpStream;
+    /// use superpoll_net::TcpStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = TcpStream::connect("example.com:80").await?;
     /// # std::io::Result::Ok(()) });
     /// ```
@@ -356,9 +356,9 @@ impl TcpStream {
     /// Connect to `127.0.0.1:8080`. If that fails, then try connecting to `127.0.0.1:8081`:
     ///
     /// ```no_run
-    /// use async_net::{SocketAddr, TcpStream};
+    /// use superpoll_net::{SocketAddr, TcpStream};
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let addrs = [
     ///     SocketAddr::from(([127, 0, 0, 1], 8080)),
     ///     SocketAddr::from(([127, 0, 0, 1], 8081)),
@@ -389,9 +389,9 @@ impl TcpStream {
     /// # Examples
     ///
     /// ```
-    /// use async_net::TcpStream;
+    /// use superpoll_net::TcpStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = TcpStream::connect("example.com:80").await?;
     /// println!("Local address is {}", stream.local_addr()?);
     /// # std::io::Result::Ok(()) });
@@ -405,9 +405,9 @@ impl TcpStream {
     /// # Examples
     ///
     /// ```
-    /// use async_net::TcpStream;
+    /// use superpoll_net::TcpStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = TcpStream::connect("example.com:80").await?;
     /// println!("Connected to {}", stream.peer_addr()?);
     /// # std::io::Result::Ok(()) });
@@ -426,9 +426,9 @@ impl TcpStream {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::{Shutdown, TcpStream};
+    /// use superpoll_net::{Shutdown, TcpStream};
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = TcpStream::connect("127.0.0.1:8080").await?;
     /// stream.shutdown(Shutdown::Both)?;
     /// # std::io::Result::Ok(()) });
@@ -447,9 +447,9 @@ impl TcpStream {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::TcpStream;
+    /// use superpoll_net::TcpStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = TcpStream::connect("127.0.0.1:8080").await?;
     ///
     /// let mut buf = vec![0; 1024];
@@ -474,9 +474,9 @@ impl TcpStream {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::TcpStream;
+    /// use superpoll_net::TcpStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = TcpStream::connect("127.0.0.1:8080").await?;
     /// println!("TCP_NODELAY is set to {}", stream.nodelay()?);
     /// # std::io::Result::Ok(()) });
@@ -499,9 +499,9 @@ impl TcpStream {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::TcpStream;
+    /// use superpoll_net::TcpStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = TcpStream::connect("127.0.0.1:8080").await?;
     /// stream.set_nodelay(false)?;
     /// # std::io::Result::Ok(()) });
@@ -518,9 +518,9 @@ impl TcpStream {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::TcpStream;
+    /// use superpoll_net::TcpStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = TcpStream::connect("127.0.0.1:8080").await?;
     /// println!("IP_TTL is set to {}", stream.ttl()?);
     /// # std::io::Result::Ok(()) });
@@ -537,9 +537,9 @@ impl TcpStream {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::TcpStream;
+    /// use superpoll_net::TcpStream;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let stream = TcpStream::connect("127.0.0.1:8080").await?;
     /// stream.set_ttl(100)?;
     /// # std::io::Result::Ok(()) });

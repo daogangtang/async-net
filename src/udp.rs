@@ -35,9 +35,9 @@ use crate::addr::AsyncToSocketAddrs;
 /// # Examples
 ///
 /// ```no_run
-/// use async_net::UdpSocket;
+/// use superpoll_net::UdpSocket;
 ///
-/// # futures_lite::future::block_on(async {
+/// # futures::executor::block_on(async {
 /// let socket = UdpSocket::bind("127.0.0.1:8080").await?;
 /// let mut buf = vec![0u8; 20];
 ///
@@ -76,9 +76,9 @@ impl UdpSocket {
     /// Create a UDP socket bound to `127.0.0.1:3400`:
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:3400").await?;
     /// # std::io::Result::Ok(()) });
     /// ```
@@ -87,9 +87,9 @@ impl UdpSocket {
     /// binding to `127.0.0.1:3401`:
     ///
     /// ```no_run
-    /// use async_net::{SocketAddr, UdpSocket};
+    /// use superpoll_net::{SocketAddr, UdpSocket};
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let addrs = [
     ///     SocketAddr::from(([127, 0, 0, 1], 3400)),
     ///     SocketAddr::from(([127, 0, 0, 1], 3401)),
@@ -125,9 +125,9 @@ impl UdpSocket {
     /// Bind to port 0 and then see which port was assigned by the operating system:
     ///
     /// ```no_run
-    /// use async_net::{SocketAddr, UdpSocket};
+    /// use superpoll_net::{SocketAddr, UdpSocket};
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:0").await?;
     /// println!("Bound to {}", socket.local_addr()?);
     /// # std::io::Result::Ok(()) });
@@ -141,9 +141,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// socket.connect("192.168.0.1:41203").await?;
     /// println!("Connected to {}", socket.peer_addr()?);
@@ -167,9 +167,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:3400").await?;
     /// socket.connect("127.0.0.1:8080").await?;
     /// # std::io::Result::Ok(()) });
@@ -202,9 +202,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     ///
     /// let mut buf = vec![0u8; 1024];
@@ -229,9 +229,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     ///
     /// let mut buf = vec![0u8; 1024];
@@ -252,9 +252,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// socket.send_to(b"hello", "127.0.0.1:4242").await?;
     /// # std::io::Result::Ok(()) });
@@ -286,9 +286,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// socket.connect("127.0.0.1:8080").await?;
     ///
@@ -317,9 +317,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// socket.connect("127.0.0.1:8080").await?;
     ///
@@ -340,9 +340,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// socket.connect("127.0.0.1:8080").await?;
     /// socket.send(b"hello").await?;
@@ -359,9 +359,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// println!("SO_BROADCAST is set to {}", socket.broadcast()?);
     /// # std::io::Result::Ok(()) });
@@ -377,9 +377,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// socket.set_broadcast(true)?;
     /// # std::io::Result::Ok(()) });
@@ -397,9 +397,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// println!("IP_MULTICAST_LOOP is set to {}", socket.multicast_loop_v4()?);
     /// # std::io::Result::Ok(()) });
@@ -417,9 +417,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// socket.set_multicast_loop_v4(true)?;
     /// # std::io::Result::Ok(()) });
@@ -441,9 +441,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// println!("IP_MULTICAST_TTL is set to {}", socket.multicast_loop_v4()?);
     /// # std::io::Result::Ok(()) });
@@ -463,9 +463,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// socket.set_multicast_ttl_v4(10)?;
     /// # std::io::Result::Ok(()) });
@@ -483,9 +483,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// println!("IPV6_MULTICAST_LOOP is set to {}", socket.multicast_loop_v6()?);
     /// # std::io::Result::Ok(()) });
@@ -503,9 +503,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// socket.set_multicast_loop_v6(true)?;
     /// # std::io::Result::Ok(()) });
@@ -524,9 +524,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// println!("IP_TTL is set to {}", socket.ttl()?);
     /// # std::io::Result::Ok(()) });
@@ -543,9 +543,9 @@ impl UdpSocket {
     /// # Examples
     ///
     /// ```no_run
-    /// use async_net::UdpSocket;
+    /// use superpoll_net::UdpSocket;
     ///
-    /// # futures_lite::future::block_on(async {
+    /// # futures::executor::block_on(async {
     /// let socket = UdpSocket::bind("127.0.0.1:34254").await?;
     /// socket.set_ttl(100)?;
     /// # std::io::Result::Ok(()) });
